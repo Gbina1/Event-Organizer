@@ -1,0 +1,59 @@
+UseCaseModel EventOrganizer {
+
+	UC::createeventlistings "createeventslistings"
+	UC::manageeventregistration "manageeventregistration"
+	UC::searchandregisterforevents "searchandregisterforevents"
+	UC::trackattendance "trackattendance"
+	UC::shareupdates "shareupdates"
+	UC::managemybooth
+	UC::gatherfeedback "gatherfeedback"
+	UC::receiveeventreminder "receiveeventreminder"
+
+	Actor Eventorganizer("Eventorganizer") {
+	createeventlistings
+		manageeventregistration
+		trackattendance
+		shareupdates
+	}
+
+	Actor Attendee("Attendee") {
+	searchandregisterforevents
+		receiveeventreminder
+	}
+
+	Actor Exhibitor("Exhibitor") {
+	managemybooth
+	}
+
+	Actor Eventhost("Eventhost") {
+	gatherfeedback
+	}
+
+	Interaction Usecase1SSD {
+
+		[Participants: Usecase1Service]
+
+	}
+
+	Service Assignment1System {
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+Service Usecase1Service {
+
+	}
+
+Service EventOrganizerSystem {
+
+	}
+
+}
+
+DomainModel Assignment1 {
+
+}
+

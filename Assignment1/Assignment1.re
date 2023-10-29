@@ -1,4 +1,7 @@
-As a  event organizer , I want to create event listings so that people can discover my events { Basic Flow {
+As a  event organizer , I want to create event listings so that people can discover my events
+
+ {
+	 Basic Flow {
 
 (User) 1. The event organizer shall login and access event creation screen.
 
@@ -8,7 +11,12 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (System) 4. The Event Management System shall publish event listing.
 
-} } As a  event organizer , I want to manage event registration so attendees can sign up { Basic Flow {
+
+}
+ } 
+ 
+ 
+ As a  event organizer , I want to manage event registration so attendees can sign up { Basic Flow {
 
 (System) 1. The Event Management System shall allow attendees to view event details and register.
 
@@ -18,7 +26,12 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (User) 4. The organizer shall access registrations dashboard to track signups.
 
-} } As a  attendee , I want to search and register for events i want them to { Basic Flow {
+
+} 
+
+} 
+
+As a  attendee , I want to search and register for events i want them to { Basic Flow {
 
 (User) 1. The attendee shall search for events by category date location etc.
 
@@ -28,7 +41,12 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (System) 4. The Event Management System shall confirm event registration to attendee.
 
-} } As a  event organizer , I want to track attendance to plan logistics { Basic Flow {
+
+}
+ 
+ }
+ 
+  As a  event organizer , I want to track attendance to plan logistics { Basic Flow {
 
 (System) 1. The Event Management System shall allow on site check in upon attendees arrival at venue.
 
@@ -38,7 +56,12 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (User) 4. The organizer shall adjust staffing seating arrangements etc based on actual attendance.
 
-} } As a  event organizer , I want to share updates with attendees before and during events { Basic Flow {
+
+}
+
+ } 
+ 
+ As a  event organizer , I want to share updates with attendees before and during events { Basic Flow {
 
 (User) 1. The organizer shall create notifications and schedule their delivery to attendees.
 
@@ -46,7 +69,11 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (System) 3. The Event Management System shall allow pushing real time announcements during an event.
 
-} } As a  exhibitor , I want to manage my booth and interactions at an event { Basic Flow {
+} 
+
+} 
+
+As a  exhibitor , I want to manage my booth and interactions at an event { Basic Flow {
 
 (User) 1. The exhibitor shall access virtual booth management interface.
 
@@ -56,7 +83,11 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (System) 4. The Event Management System shall allow attendees to interact and connect with exhibitors.
 
-} } As a  attendee , I want to receive event reminders { Basic Flow {
+
+} 
+}
+
+ As a  attendee , I want to receive event reminders { Basic Flow {
 
 (User) 1. The attendee shall register for an event and provides their contact information including email and mobile number.
 
@@ -66,7 +97,11 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (User) 4. The attendee shall receive event reminders which include event date time location and any additional important information.
 
-} } As a  event host , I want to gather feedback from attendees after events { Basic Flow {
+}
+
+ }
+ 
+  As a  event host , I want to gather feedback from attendees after events { Basic Flow {
 
 (System) 1. The Event Management System shall send post event surveys to attendees.
 
@@ -76,4 +111,15 @@ As a  event organizer , I want to create event listings so that people can disco
 
 (User) 4. The event host shall review feedback results to improve future events.
 
-} } As a  event organizer , I want to create event listings so people can discover my events As a  event organizer , I want to manage event registration so attendees can sign up As a  attendee , I want to search and register for events I am interested in As a  event organizer , I want to track attendance to plan logistics As a  event organizer , I want to share updates with attendees before and during events As a  exhibitor , I want to manage my booth and interactions at an event As a  event host , I want to gather feedback from attendees after events
+}
+
+ } 
+ 
+ As a  event organizer , I want to create event listings so people can discover my events 
+ As a  event organizer , I want to manage event registration so attendees can sign up 
+ As a  attendee , I want to search and register for events I am interested in 
+ As a  event organizer , I want to track attendance to plan logistics 
+ As a  event organizer , I want to share updates with attendees before and during events 
+ As a  exhibitor , I want to manage my booth and interactions at an event 
+ As a  attendee , I want to receive event reminders
+ As a  event host , I want to gather feedback from attendees after events

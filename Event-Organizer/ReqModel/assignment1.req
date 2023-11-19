@@ -1,0 +1,426 @@
+UseCaseModel EventOrganizer { UseCaseContext EventorganizerService { UC :: trackattendance "trackattendance" definedBySSD(TrackattendanceSSD) relatedService(TrackattendanceService) UC :: shareupdates "shareupdates" definedBySSD(ShareupdatesSSD) relatedService(ShareupdatesService) UC :: manageeventregistration "manageeventregistration" definedBySSD(ManageeventregistrationSSD) relatedService(ManageeventregistrationService) } UseCaseContext AttendeeService { UC :: searchandregisterforevents "searchandregisterforevents" UC :: receiveeventreminder "receiveeventreminder" } UseCaseContext ExhibitorService { UC :: managemybooth "managemybooth" } UseCaseContext EventhostService { UC :: gatherfeedback "gatherfeedback" } UseCaseContext EntityContext { UC :: createeventlistings "createeventslistings" definedBySSD(CreateeventlistingsSSD) relatedService(CreateeventlistingsService) }
+
+	Actor Eventorganizer("Eventorganizer") {
+		createeventlistings
+		manageeventregistration
+		trackattendance
+		shareupdates
+	}
+
+	Actor Attendee("Attendee") {
+		searchandregisterforevents
+		receiveeventreminder
+	}
+
+	Actor Exhibitor("Exhibitor") {
+		managemybooth
+	}
+
+	Actor Eventhost("Eventhost") {
+		gatherfeedback
+	}
+
+	Interaction TrackattendanceSSD {
+
+		[Participants: Eventorganizer TrackattendanceService]
+
+		CallMessage::TrackattendanceSSDCallMessage1(takeattendeesinfo TrackattendanceSSDCallMessage1SendingEnd -> TrackattendanceSSDExecution1StartEnd)
+		ReturnMessage::TrackattendanceSSDCallMessage1Return(TrackattendanceSSDExecution1FinishEnd -> TrackattendanceSSDCallMessage1ReturnReceivingEnd TrackattendanceSSDCallMessage1)
+
+		Execution::TrackattendanceSSDExecution1(TrackattendanceService TrackattendanceSSDExecution1StartEnd TrackattendanceSSDExecution1FinishEnd)
+
+		MessageEnd::TrackattendanceSSDCallMessage1SendingEnd(Eventorganizer TrackattendanceSSDCallMessage1)
+		ExecutionEnd::TrackattendanceSSDExecution1StartEnd(TrackattendanceService TrackattendanceSSDExecution1)
+		ExecutionEnd::TrackattendanceSSDExecution1FinishEnd(TrackattendanceService TrackattendanceSSDExecution1)
+		MessageEnd::TrackattendanceSSDCallMessage1ReturnReceivingEnd(Eventorganizer TrackattendanceSSDCallMessage1Return)
+
+	}
+
+	Interaction CreateeventlistingsSSD {
+
+		[Participants: Eventorganizer CreateeventlistingsService]
+
+		CallMessage::CreateeventlistingsSSDCallMessage1(makeeventlists CreateeventlistingsSSDCallMessage1SendingEnd -> CreateeventlistingsSSDExecution1StartEnd)
+		ReturnMessage::CreateeventlistingsSSDCallMessage1Return(CreateeventlistingsSSDExecution1FinishEnd -> CreateeventlistingsSSDCallMessage1ReturnReceivingEnd CreateeventlistingsSSDCallMessage1)
+		CallMessage::CreateeventlistingsSSDCallMessage3(collecteventinfo CreateeventlistingsSSDCallMessage3SendingEnd -> CreateeventlistingsSSDExecution2StartEnd)
+		ReturnMessage::CreateeventlistingsSSDCallMessage3Return(CreateeventlistingsSSDExecution2FinishEnd -> CreateeventlistingsSSDCallMessage3ReturnReceivingEnd CreateeventlistingsSSDCallMessage3)
+		CallMessage::CreateeventlistingsSSDCallMessage5(displayeventinfo CreateeventlistingsSSDCallMessage5SendingEnd -> CreateeventlistingsSSDExecution3StartEnd)
+		ReturnMessage::CreateeventlistingsSSDCallMessage5Return(CreateeventlistingsSSDExecution3FinishEnd -> CreateeventlistingsSSDCallMessage5ReturnReceivingEnd CreateeventlistingsSSDCallMessage5)
+		CallMessage::CreateeventlistingsSSDCallMessage7(displayeventnumbers CreateeventlistingsSSDCallMessage7SendingEnd -> CreateeventlistingsSSDExecution4StartEnd)
+		ReturnMessage::CreateeventlistingsSSDCallMessage7Return(CreateeventlistingsSSDExecution4FinishEnd -> CreateeventlistingsSSDCallMessage7ReturnReceivingEnd CreateeventlistingsSSDCallMessage7)
+
+		Execution::CreateeventlistingsSSDExecution1(CreateeventlistingsService CreateeventlistingsSSDExecution1StartEnd CreateeventlistingsSSDExecution1FinishEnd)
+		Execution::CreateeventlistingsSSDExecution2(CreateeventlistingsService CreateeventlistingsSSDExecution2StartEnd CreateeventlistingsSSDExecution2FinishEnd)
+		Execution::CreateeventlistingsSSDExecution3(CreateeventlistingsService CreateeventlistingsSSDExecution3StartEnd CreateeventlistingsSSDExecution3FinishEnd)
+		Execution::CreateeventlistingsSSDExecution4(CreateeventlistingsService CreateeventlistingsSSDExecution4StartEnd CreateeventlistingsSSDExecution4FinishEnd)
+
+		MessageEnd::CreateeventlistingsSSDCallMessage1SendingEnd(Eventorganizer CreateeventlistingsSSDCallMessage1)
+		ExecutionEnd::CreateeventlistingsSSDExecution1StartEnd(CreateeventlistingsService CreateeventlistingsSSDExecution1)
+		ExecutionEnd::CreateeventlistingsSSDExecution1FinishEnd(CreateeventlistingsService CreateeventlistingsSSDExecution1)
+		MessageEnd::CreateeventlistingsSSDCallMessage1ReturnReceivingEnd(Eventorganizer CreateeventlistingsSSDCallMessage1Return)
+		MessageEnd::CreateeventlistingsSSDCallMessage3SendingEnd(Eventorganizer CreateeventlistingsSSDCallMessage3)
+		ExecutionEnd::CreateeventlistingsSSDExecution2StartEnd(CreateeventlistingsService CreateeventlistingsSSDExecution2)
+		ExecutionEnd::CreateeventlistingsSSDExecution2FinishEnd(CreateeventlistingsService CreateeventlistingsSSDExecution2)
+		MessageEnd::CreateeventlistingsSSDCallMessage3ReturnReceivingEnd(Eventorganizer CreateeventlistingsSSDCallMessage3Return)
+		MessageEnd::CreateeventlistingsSSDCallMessage5SendingEnd(Eventorganizer CreateeventlistingsSSDCallMessage5)
+		ExecutionEnd::CreateeventlistingsSSDExecution3StartEnd(CreateeventlistingsService CreateeventlistingsSSDExecution3)
+		ExecutionEnd::CreateeventlistingsSSDExecution3FinishEnd(CreateeventlistingsService CreateeventlistingsSSDExecution3)
+		MessageEnd::CreateeventlistingsSSDCallMessage5ReturnReceivingEnd(Eventorganizer CreateeventlistingsSSDCallMessage5Return)
+		MessageEnd::CreateeventlistingsSSDCallMessage7SendingEnd(Eventorganizer CreateeventlistingsSSDCallMessage7)
+		ExecutionEnd::CreateeventlistingsSSDExecution4StartEnd(CreateeventlistingsService CreateeventlistingsSSDExecution4)
+		ExecutionEnd::CreateeventlistingsSSDExecution4FinishEnd(CreateeventlistingsService CreateeventlistingsSSDExecution4)
+		MessageEnd::CreateeventlistingsSSDCallMessage7ReturnReceivingEnd(Eventorganizer CreateeventlistingsSSDCallMessage7Return)
+
+	}
+
+	Interaction ShareupdatesSSD {
+
+		[Participants: Eventorganizer ShareupdatesService]
+
+		CallMessage::ShareupdatesSSDCallMessage1(collectupdates ShareupdatesSSDCallMessage1SendingEnd -> ShareupdatesSSDExecution1StartEnd)
+		ReturnMessage::ShareupdatesSSDCallMessage1Return(ShareupdatesSSDExecution1FinishEnd -> ShareupdatesSSDCallMessage1ReturnReceivingEnd ShareupdatesSSDCallMessage1)
+		CallMessage::ShareupdatesSSDCallMessage3(displayupdates ShareupdatesSSDCallMessage3SendingEnd -> ShareupdatesSSDExecution2StartEnd)
+		ReturnMessage::ShareupdatesSSDCallMessage3Return(ShareupdatesSSDExecution2FinishEnd -> ShareupdatesSSDCallMessage3ReturnReceivingEnd ShareupdatesSSDCallMessage3)
+		CallMessage::ShareupdatesSSDCallMessage5(manageupdates ShareupdatesSSDCallMessage5SendingEnd -> ShareupdatesSSDExecution3StartEnd)
+		ReturnMessage::ShareupdatesSSDCallMessage5Return(ShareupdatesSSDExecution3FinishEnd -> ShareupdatesSSDCallMessage5ReturnReceivingEnd ShareupdatesSSDCallMessage5)
+
+		Execution::ShareupdatesSSDExecution1(ShareupdatesService ShareupdatesSSDExecution1StartEnd ShareupdatesSSDExecution1FinishEnd)
+		Execution::ShareupdatesSSDExecution2(ShareupdatesService ShareupdatesSSDExecution2StartEnd ShareupdatesSSDExecution2FinishEnd)
+		Execution::ShareupdatesSSDExecution3(ShareupdatesService ShareupdatesSSDExecution3StartEnd ShareupdatesSSDExecution3FinishEnd)
+
+		MessageEnd::ShareupdatesSSDCallMessage1SendingEnd(Eventorganizer ShareupdatesSSDCallMessage1)
+		ExecutionEnd::ShareupdatesSSDExecution1StartEnd(ShareupdatesService ShareupdatesSSDExecution1)
+		ExecutionEnd::ShareupdatesSSDExecution1FinishEnd(ShareupdatesService ShareupdatesSSDExecution1)
+		MessageEnd::ShareupdatesSSDCallMessage1ReturnReceivingEnd(Eventorganizer ShareupdatesSSDCallMessage1Return)
+		MessageEnd::ShareupdatesSSDCallMessage3SendingEnd(Eventorganizer ShareupdatesSSDCallMessage3)
+		ExecutionEnd::ShareupdatesSSDExecution2StartEnd(ShareupdatesService ShareupdatesSSDExecution2)
+		ExecutionEnd::ShareupdatesSSDExecution2FinishEnd(ShareupdatesService ShareupdatesSSDExecution2)
+		MessageEnd::ShareupdatesSSDCallMessage3ReturnReceivingEnd(Eventorganizer ShareupdatesSSDCallMessage3Return)
+		MessageEnd::ShareupdatesSSDCallMessage5SendingEnd(Eventorganizer ShareupdatesSSDCallMessage5)
+		ExecutionEnd::ShareupdatesSSDExecution3StartEnd(ShareupdatesService ShareupdatesSSDExecution3)
+		ExecutionEnd::ShareupdatesSSDExecution3FinishEnd(ShareupdatesService ShareupdatesSSDExecution3)
+		MessageEnd::ShareupdatesSSDCallMessage5ReturnReceivingEnd(Eventorganizer ShareupdatesSSDCallMessage5Return)
+
+	}
+
+	Interaction ManageeventregistrationSSD {
+
+		[Participants: Eventorganizer ManageeventregistrationService]
+
+		CallMessage::ManageeventregistrationSSDCallMessage1(takeattendeeinfo ManageeventregistrationSSDCallMessage1SendingEnd -> ManageeventregistrationSSDExecution1StartEnd)
+		ReturnMessage::ManageeventregistrationSSDCallMessage1Return(ManageeventregistrationSSDExecution1FinishEnd -> ManageeventregistrationSSDCallMessage1ReturnReceivingEnd ManageeventregistrationSSDCallMessage1)
+		CallMessage::ManageeventregistrationSSDCallMessage3(registerattendee ManageeventregistrationSSDCallMessage3SendingEnd -> ManageeventregistrationSSDExecution2StartEnd)
+		ReturnMessage::ManageeventregistrationSSDCallMessage3Return(ManageeventregistrationSSDExecution2FinishEnd -> ManageeventregistrationSSDCallMessage3ReturnReceivingEnd ManageeventregistrationSSDCallMessage3)
+		CallMessage::ManageeventregistrationSSDCallMessage5(displayregisteredattendee ManageeventregistrationSSDCallMessage5SendingEnd -> ManageeventregistrationSSDExecution3StartEnd)
+		ReturnMessage::ManageeventregistrationSSDCallMessage5Return(ManageeventregistrationSSDExecution3FinishEnd -> ManageeventregistrationSSDCallMessage5ReturnReceivingEnd ManageeventregistrationSSDCallMessage5)
+		CallMessage::ManageeventregistrationSSDCallMessage7(makealistofallattendees ManageeventregistrationSSDCallMessage7SendingEnd -> ManageeventregistrationSSDExecution4StartEnd)
+		ReturnMessage::ManageeventregistrationSSDCallMessage7Return(ManageeventregistrationSSDExecution4FinishEnd -> ManageeventregistrationSSDCallMessage7ReturnReceivingEnd ManageeventregistrationSSDCallMessage7)
+
+		Execution::ManageeventregistrationSSDExecution1(ManageeventregistrationService ManageeventregistrationSSDExecution1StartEnd ManageeventregistrationSSDExecution1FinishEnd)
+		Execution::ManageeventregistrationSSDExecution2(ManageeventregistrationService ManageeventregistrationSSDExecution2StartEnd ManageeventregistrationSSDExecution2FinishEnd)
+		Execution::ManageeventregistrationSSDExecution3(ManageeventregistrationService ManageeventregistrationSSDExecution3StartEnd ManageeventregistrationSSDExecution3FinishEnd)
+		Execution::ManageeventregistrationSSDExecution4(ManageeventregistrationService ManageeventregistrationSSDExecution4StartEnd ManageeventregistrationSSDExecution4FinishEnd)
+
+		MessageEnd::ManageeventregistrationSSDCallMessage1SendingEnd(Eventorganizer ManageeventregistrationSSDCallMessage1)
+		ExecutionEnd::ManageeventregistrationSSDExecution1StartEnd(ManageeventregistrationService ManageeventregistrationSSDExecution1)
+		ExecutionEnd::ManageeventregistrationSSDExecution1FinishEnd(ManageeventregistrationService ManageeventregistrationSSDExecution1)
+		MessageEnd::ManageeventregistrationSSDCallMessage1ReturnReceivingEnd(Eventorganizer ManageeventregistrationSSDCallMessage1Return)
+		MessageEnd::ManageeventregistrationSSDCallMessage3SendingEnd(Eventorganizer ManageeventregistrationSSDCallMessage3)
+		ExecutionEnd::ManageeventregistrationSSDExecution2StartEnd(ManageeventregistrationService ManageeventregistrationSSDExecution2)
+		ExecutionEnd::ManageeventregistrationSSDExecution2FinishEnd(ManageeventregistrationService ManageeventregistrationSSDExecution2)
+		MessageEnd::ManageeventregistrationSSDCallMessage3ReturnReceivingEnd(Eventorganizer ManageeventregistrationSSDCallMessage3Return)
+		MessageEnd::ManageeventregistrationSSDCallMessage5SendingEnd(Eventorganizer ManageeventregistrationSSDCallMessage5)
+		ExecutionEnd::ManageeventregistrationSSDExecution3StartEnd(ManageeventregistrationService ManageeventregistrationSSDExecution3)
+		ExecutionEnd::ManageeventregistrationSSDExecution3FinishEnd(ManageeventregistrationService ManageeventregistrationSSDExecution3)
+		MessageEnd::ManageeventregistrationSSDCallMessage5ReturnReceivingEnd(Eventorganizer ManageeventregistrationSSDCallMessage5Return)
+		MessageEnd::ManageeventregistrationSSDCallMessage7SendingEnd(Eventorganizer ManageeventregistrationSSDCallMessage7)
+		ExecutionEnd::ManageeventregistrationSSDExecution4StartEnd(ManageeventregistrationService ManageeventregistrationSSDExecution4)
+		ExecutionEnd::ManageeventregistrationSSDExecution4FinishEnd(ManageeventregistrationService ManageeventregistrationSSDExecution4)
+		MessageEnd::ManageeventregistrationSSDCallMessage7ReturnReceivingEnd(Eventorganizer ManageeventregistrationSSDCallMessage7Return)
+
+	}
+
+	Service Assignment1System {
+
+	}
+
+	Service ThirdPartyServices {
+
+	}
+
+	Service Usecase1Service {
+
+	}
+
+	Service EventOrganizerSystem {
+
+	}
+
+	Service TrackattendanceService {
+
+		[Operation]
+		takeattendeesinfo(info)
+
+	}
+
+	Service CreateeventlistingsService {
+
+		[Operation]
+		makeeventlists()
+		collecteventinfo()
+		displayeventinfo()
+		displayeventnumbers()
+
+	}
+
+	Service ShareupdatesService {
+
+		[Operation]
+		collectupdates()
+		displayupdates()
+		manageupdates()
+
+	}
+
+	Service ManageeventregistrationService {
+
+		[Operation]
+		takeattendeeinfo()
+		registerattendee()
+		displayregisteredattendee()
+		makealistofallattendees()
+
+	}
+
+	Contract TrackattendanceService::takeattendeesinfo(info : String) : String {
+
+		definition:
+			ta:Organizer = Takeattendees.allInstance()->any(ta:Organizer | ta.attendeeinfo = attendee)
+
+		precondition:
+			true
+		postcondition:
+			if
+				(ta.oclIsUndefined() = false)
+			then
+				self.attendeeinfo = true and
+				self.attendee = ta and
+				result = true
+			else
+				self.infovalidate = false and
+				result = false
+			endif
+	}
+
+	Contract CreateeventlistingsService::makeeventlists() : Boolean {
+
+		definition:
+			ta:Event = Eventlist.allInstance()->any(ta:Event | ta.Eventlist = Event)
+
+		precondition:
+			true
+		postcondition:
+			if
+				(bc.oclIsUndefined() = false)
+			then
+				self.Eventlistvalidated = true and
+				self.Inputlist = ta and
+				result = true
+			else
+				self.Eventlistvalidated = false and
+				result = false
+			endif
+	}
+
+	Contract CreateeventlistingsService::collecteventinfo() : Boolean {
+
+		definition:
+			ta:Event = Eventinfo.allInstance()->any(ta:Event | ta.Eventinfo = Event)
+
+		precondition:
+			true
+		postcondition:
+			if
+				(bc.oclIsUndefined() = false)
+			then
+				self.Eventinfovalidated = true and
+				self.inputinfo = ta and
+				result = true
+			else
+				self.Eventinfovalidated = false and
+				result = false
+			endif
+
+	}
+
+	Contract CreateeventlistingsService::displayeventinfo() : Boolean {
+
+		definition:
+			ta:Event = DisplayEventinfo.allInstance()->any(ta:Event | ta.DisplayEventinfo = Event)
+
+		precondition:
+			true
+		postcondition:
+			if
+				(bc.oclIsUndefined() = false)
+			then
+				self.DisplayEventinfovalidated = true and
+				self.Eventinfo = ta and
+				result = true
+			else
+				self.DisplayEventinfovalidated = false and
+				result = false
+			endif
+	}
+
+	Contract CreateeventlistingsService::displayeventnumbers() : Boolean {
+
+		definition:
+			ta:Event = DisplayEventnumbers.allInstance()->any(ta:Event | ta.DisplayEventnumbers = Event)
+
+		precondition:
+			true
+		postcondition:
+			if
+				(bc.oclIsUndefined() = false)
+			then
+				self.DisplayEventnumbersvalidated = true and
+				self.Eventnumbers = ta and
+				result = true
+			else
+				self.DisplayEventnumbersvalidated = false and
+				result = false
+			endif
+	}
+
+	Contract ShareupdatesService::collectupdates() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ShareupdatesService::displayupdates() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ShareupdatesService::manageupdates() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ManageeventregistrationService::takeattendeeinfo() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ManageeventregistrationService::registerattendee() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ManageeventregistrationService::displayregisteredattendee() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+	Contract ManageeventregistrationService::makealistofallattendees() : Boolean {
+
+		precondition:
+			true
+		postcondition:
+			true
+	}
+
+}
+
+DomainModel Assignment1 { EntityContext EventorganizerService { Entity Booth {
+		Exhibitor : String
+		Content : String
+
+		[Refer]
+		BoothtoExhibitor : Exhibitor Association
+		BoothtoContent : Content Association
+	} Entity Feedback {
+		Rating : Boolean
+		Comments : String
+
+		[Refer]
+		FeedbacktoAttendee : Attendee Association
+	} Entity Event {
+		Title : String
+		Dateofevent : Date
+		Venue : String
+		Description : String
+		Pricing : String
+		Categories : String
+
+		[Refer]
+		EventtoTicket : Ticket* Association
+	} } EntityContext AttendeeService { Entity Ticket {
+		Event : String
+		Price : Boolean
+
+		[Refer]
+		TickettoEvent : Event ! Association
+		TickettoAttendee : Attendee Association
+	} Entity Exhibitor {
+		Company2 : String
+
+		[Refer]
+		ExhibitortoBooth : Booth ! Association
+	} Entity CheckIn {
+		Attendee2 : String
+		Checkintime : Date
+
+		[Refer]
+		CheckIntoAttendee : Attendee Association
+	} } EntityContext ExhibitorService { Entity User {
+		Name : String
+		Email : String
+		Phone : Boolean
+	} Entity Content {
+		Title : String
+		Type : String
+
+		[Refer]
+		ContenttoBooth : Booth* ! Association
+	} Entity Notification {
+		Message : String
+		DeliveryDate : Date
+	} } EntityContext EventhostService { Entity Registration {
+		Attendee1 : String
+		Confirmationsent : String
+
+		[Refer]
+		RegistrationtoAttendee : Attendee Association
+	} Entity Attendee {
+		Ticket : String
+
+		[Refer]
+		AttendeetoTicket : Ticket ! Association
+		AttendeetoFeedback : Feedback ! Association
+		AttendeetoCheckIn : CheckIn ! Association
+	} } EntityContext EntityContext { Entity Organizer {
+		Company1 : String
+
+		[Refer]
+		OrganizertoUser : User Association
+	} } }

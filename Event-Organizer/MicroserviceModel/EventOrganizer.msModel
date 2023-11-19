@@ -1,0 +1,198 @@
+MicroServiceModel EventOrganizer {
+	MicroService EventhostService {
+		ProvidedInterface gatherfeedback{
+			[Operation]
+			gatherfeedback
+		}
+		ProvidedInterface manageAttendee{
+			[Operation]
+			createAttendee
+			queryAttendee
+			updateAttendee
+			modifyAttendee
+		}
+		RequiredInterface manageTicket
+		RequiredInterface manageFeedback
+		RequiredInterface manageCheckIn
+		DomainModel EventhostService {
+			 Entity Registration {
+				Attendee1 : String
+				Confirmationsent : String
+				[Refer]
+				RegistrationtoAttendee : Attendee  Association
+			}
+			 Entity Attendee {
+				Ticket : String
+				[Refer]
+			}
+		}
+	}
+	MicroService  {
+		ProvidedInterface createeventlistings{
+			[Operation]
+			createeventlistings
+		}
+		RequiredInterface manageUser
+		DomainModel  {
+			 Entity Organizer {
+				Company1 : String
+				[Refer]
+			}
+		}
+	}
+	MicroService AttendeeService {
+		ProvidedInterface searchandregisterforevents{
+			[Operation]
+			searchandregisterforevents
+		}
+		ProvidedInterface receiveeventreminder{
+			[Operation]
+			receiveeventreminder
+		}
+		ProvidedInterface manageExhibitor{
+			[Operation]
+			createExhibitor
+			queryExhibitor
+			updateExhibitor
+			modifyExhibitor
+		}
+		ProvidedInterface manageTicket{
+			[Operation]
+			createTicket
+			queryTicket
+			updateTicket
+			modifyTicket
+		}
+		ProvidedInterface manageCheckIn{
+			[Operation]
+			createCheckIn
+			queryCheckIn
+			updateCheckIn
+			modifyCheckIn
+		}
+		RequiredInterface manageEvent
+		RequiredInterface manageAttendee
+		RequiredInterface manageBooth
+		DomainModel AttendeeService {
+			 Entity Ticket {
+				Event : String
+				Price : Boolean
+				[Refer]
+			}
+			 Entity Exhibitor {
+				Company2 : String
+				[Refer]
+			}
+			 Entity CheckIn {
+				Attendee2 : String
+				Checkintime : Date
+				[Refer]
+			}
+		}
+	}
+	MicroService EventorganizerService {
+		ProvidedInterface trackattendance{
+			[Operation]
+			trackattendance
+		}
+		ProvidedInterface shareupdates{
+			[Operation]
+			shareupdates
+		}
+		ProvidedInterface manageeventregistration{
+			[Operation]
+			createeventregistration
+			queryeventregistration
+			updateeventregistration
+			modifyeventregistration
+		}
+		ProvidedInterface manageEvent{
+			[Operation]
+			createEvent
+			queryEvent
+			updateEvent
+			modifyEvent
+		}
+		ProvidedInterface manageBooth{
+			[Operation]
+			createBooth
+			queryBooth
+			updateBooth
+			modifyBooth
+		}
+		ProvidedInterface manageFeedback{
+			[Operation]
+			createFeedback
+			queryFeedback
+			updateFeedback
+			modifyFeedback
+		}
+		RequiredInterface manageExhibitor
+		RequiredInterface manageContent
+		RequiredInterface manageAttendee
+		RequiredInterface manageTicket
+		DomainModel EventorganizerService {
+			 Entity Booth {
+				Exhibitor : String
+				Content : String
+				[Refer]
+			}
+			 Entity Feedback {
+				Rating : Boolean
+				Comments : String
+				[Refer]
+			}
+			 Entity Event {
+				Title : String
+				Dateofevent : Date
+				Venue : String
+				Description : String
+				Pricing : String
+				Categories : String
+				[Refer]
+			}
+		}
+	}
+	MicroService ExhibitorService {
+		ProvidedInterface managemybooth{
+			[Operation]
+			createmybooth
+			querymybooth
+			updatemybooth
+			modifymybooth
+		}
+		ProvidedInterface manageContent{
+			[Operation]
+			createContent
+			queryContent
+			updateContent
+			modifyContent
+		}
+		ProvidedInterface manageUser{
+			[Operation]
+			createUser
+			queryUser
+			updateUser
+			modifyUser
+		}
+		RequiredInterface manageBooth
+		DomainModel ExhibitorService {
+			 Entity User {
+				Name : String
+				Email : String
+				Phone : Boolean
+				[Refer]
+			}
+			 Entity Content {
+				Title : String
+				Type : String
+				[Refer]
+			}
+			 Entity Notification {
+				Message : String
+				DeliveryDate : Date
+				[Refer]
+			}
+		}
+	}
+}

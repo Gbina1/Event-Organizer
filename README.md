@@ -31,6 +31,7 @@ Prototype:
 
 This is my prototype result which shows that it is not correct and that it has many errors, this part was the hardest part and the part that i struggled with the most and did not manage to figure out in the end.
 
+
 # Lab 3
 
 In Lab 3 the Professor asked us to download the Plug ins and then my project from Github and then do some changes and generate some models that are important.
@@ -38,18 +39,30 @@ In Lab 3 the Professor asked us to download the Plug ins and then my project fro
 
 these are my diagrams after the requested changes.
 
+
+
 ![image](https://github.com/Gbina1/Event-Organizer/assets/148693022/169dd3f1-c516-4b23-a4b9-c643d1350d48)
+
+
 
 ![image](https://github.com/Gbina1/Event-Organizer/assets/148693022/ea36b406-e8c4-4433-96f0-e1d9052f93d4)
 
+
+
 The next few diagrams are new ones as requested.
+
+
 
 ![image](https://github.com/Gbina1/Event-Organizer/assets/148693022/0e5e5b9b-21bc-423a-a013-d2c66c731ac0)
 
+
+
 ![image](https://github.com/Gbina1/Event-Organizer/assets/148693022/143b8f72-ac1e-42ce-b880-c07f199f13e1)
+
 
 This is My new requirements overview  as requested.
 
 
+![image](https://github.com/Gbina1/Event-Organizer/assets/148693022/ba8d4b6f-6fa8-4e48-aa1d-461af8fe9275)
 
 
